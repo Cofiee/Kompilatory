@@ -169,15 +169,15 @@ Token GetNextToken()
                     return SemiColon; 
                 case ',':
                     return Comma; 
+                case '.':
+                    return Dot;
                 case ':':
                     GetNextChar(&Inspect);
+                    PutNextChar();
                     if (Inspect == '=')
                         return Assign;
-                    else
-                    {
-                        LexicalError(CurrentChar);
-                        return ErrorSym;
-                    }
+                    else 
+                        return Colon;
                 case '+':
                     return Plus; 
                 case '-':
@@ -192,6 +192,22 @@ Token GetNextToken()
                         PutNextChar();
                         return Minus; 
                     }
+                case '<':
+                    GetNextChar(&Inspect);
+                    PutNextChar();
+                    if (Inspect == '=') 
+                        return LeEqual;
+                    else if (Inspect == '>')
+                        return NotEqual;
+                    else 
+                        return Lesser;
+                case '>':
+                    GetNextChar(&Inspect);
+                    PutNextChar();
+                    if (Inspect == '=')
+                        return GrEqual;
+                    else
+                        return Greater;
                 default:
                     LexicalError(CurrentChar);
                     return ErrorSym;

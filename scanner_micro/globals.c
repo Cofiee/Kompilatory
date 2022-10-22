@@ -2,13 +2,14 @@
 
 // TODO: change to heap allocated array
 //IdString* TokenNames = calloc(15 * sizeof(IdString))
-IdString TokenNames[19] = {
+IdString TokenNames[29] = {
     "ProgramSym", 
     "BeginSym", "EndSym", 
+    "IfSym", "ThenSym",
+    "WhileSym", "DoSym",
     "ReadSym", "WriteSym", 
     "Id", 
-    "IntLiteral", 
-    "BoolLiteral", 
+    "IntLiteral", "FloatLiteral", "BoolLiteral", 
     "LParen", "RParen", 
     "Plus", "Minus", "Multiply", "Divide", 
     "Lesser", "Equal", "Greater", "LeEqual", "NotEqual", "GrEqual"

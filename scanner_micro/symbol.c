@@ -18,7 +18,7 @@ int i;
 }
 
 int Enter(IdString S, Token Code)
-  /*  Put S unconditionally into the symbol table and returns inde
+   /*  Put S unconditionally into the symbol table and returns inde
       of the entry for S */
 {
    if (LastSymbol < MAX_SYMBOL) {
@@ -36,8 +36,22 @@ int Enter(IdString S, Token Code)
 
 void LoadKeywords()
 {
+   Enter("program", ProgramSym);
    Enter("begin", BeginSym);
    Enter("end", EndSym);
+
+   Enter("if", IfSym);
+   Enter("then", ThenSym);
+   Enter("while", WhileSym);
+   Enter("do", DoSym);
+
+   Enter("integer", IntSym);
+   Enter("real", FloatSym);
+
+   Enter("var", VarSym);
+   Enter("true", BoolLiteral);
+   Enter("false", BoolLiteral);
+
    Enter("read", ReadSym);
    Enter("write", WriteSym);
 }
@@ -48,6 +62,6 @@ void ListSymbolTable()
 int i;
    printf("\n--------- Symbol Table ----------\n");
    for (i = 1; i <= LastSymbol; i++) 
-        printf("%s\n",SymbolTable[i].Name);
+      printf("%s\n",SymbolTable[i].Name);
    printf("\nTotal: %d\n", LastSymbol);
 }

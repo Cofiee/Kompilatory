@@ -18,13 +18,14 @@ typedef enum {
     ReadSym, WriteSym,
     IfSym, ThenSym,
     WhileSym, DoSym,
+    VarSym,
     Id, 
-    IntLiteral,
-    BoolLiteral, 
+    IntSym, FloatSym,
+    IntLiteral, FloatLiteral, BoolLiteral, 
     LeftParenthesis, RightParenthesis, 
     Plus, Minus, Multiply, Divide,
     Lesser, Equal, Greater, LeEqual, NotEqual, GrEqual,
-    Assign, SemiColon, Comma, 
+    Assign, SemiColon, Colon, Comma, Dot,
     EofSym, ErrorSym
 } Token;
 
@@ -32,7 +33,7 @@ typedef enum {
 typedef char IdString[ID_STRING_LENGTH];
 
 /* translation from enum to strings */
-extern IdString TokenNames[15];
+extern IdString TokenNames[29];
 
 /* The global variables communicating the lexeme of integers and
    identifiers to the parser */
