@@ -1,0 +1,9 @@
+ PROGRAM foo;
+   VAR x, b : integer;
+   VAR x : real;     -- x declared twice with different types 
+   VAR b : integer;  -- b redeclared
+   BEGIN
+      write(w, foo); -- w used but not declared
+                     -- foo cannot be used as a variable
+      b := x;        -- assignment imcompatible
+   END.

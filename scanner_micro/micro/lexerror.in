@@ -1,0 +1,8 @@
+program lexerror;
+var a, b : integer;
+BEGIN
+   a = 0;
+   read(b);
+   a := a # b; 
+   write(b, a);  
+END.

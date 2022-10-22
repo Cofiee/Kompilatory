@@ -1,0 +1,19 @@
+program alltest        -- missing ";" here
+var a,b : integer;
+var x,y : rel;        -- "real" misspelled as "real"
+var c : integer;
+begin
+   a := 1;
+   read(x,y);
+   if (a > (1 / (x - y))) then 
+       read (y);
+   if (1 <> y)                   -- "then" missing
+     if (a > 0) then
+        begin
+           read(a);
+           x := a - 1 + x / (y + (a + b));
+        end;
+-- test while statements
+   while (a <> 0) do
+      read(a);
+end.

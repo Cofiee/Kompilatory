@@ -1,0 +1,13 @@
+program iftest;
+var a,b,c:integer;
+
+begin
+   a := 10;
+   b := 5;
+   if (a + 10 * b > 20) then
+     if (a <> (b) * c / a) then
+       begin
+         c := a + b;
+         write (a,b,c);
+       end;
+end.

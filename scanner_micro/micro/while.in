@@ -1,0 +1,11 @@
+program alltest;
+--- test while statements
+var a,b : integer;
+begin
+   while (a <> 0) do
+      read(a);
+   while (a <> a + (b - 1)) do
+      begin
+         write(a);
+      end;
+end.

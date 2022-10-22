@@ -23,9 +23,9 @@ typedef enum {
     IntSym, FloatSym,
     IntLiteral, FloatLiteral, BoolLiteral, 
     LeftParenthesis, RightParenthesis, 
-    Plus, Minus, Multiply, Divide,
-    Lesser, Equal, Greater, LeEqual, NotEqual, GrEqual,
-    Assign, SemiColon, Colon, Comma, Dot,
+    PlusSym, MinusSym, MultiplySym, DivideSym,
+    LesserSym, EqualSym, GreaterSym, LeEqualSym, NotEqualSym, GrEqualSym,
+    AssignSym, SemiColonSym, ColonSym, CommaSym, DotSym,
     EofSym, ErrorSym
 } Token;
 
@@ -33,12 +33,12 @@ typedef enum {
 typedef char IdString[ID_STRING_LENGTH];
 
 /* translation from enum to strings */
-extern IdString TokenNames[29];
+extern IdString TokenNames[35];
 
 /* The global variables communicating the lexeme of integers and
    identifiers to the parser */
 extern int  IdVal;           /* the symbol-table entry for an ID */
-extern IdString IntLexeme;   /* the lexeme for an INT literal    */
+extern IdString Lexeme;   /* the lexeme for an INT literal    */
 
 /* symbol table */
 struct SymEntry {           /* form of symbol table entry */

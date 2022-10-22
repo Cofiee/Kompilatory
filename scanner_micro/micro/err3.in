@@ -1,0 +1,8 @@
+program err1;
+var a, b : integer;
+BEGIN
+   reead(a, b); -- misspelled keyword 
+   a := b;
+   a := b + 1 * a;
+   write(a, b);
+END.

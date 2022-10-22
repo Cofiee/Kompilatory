@@ -18,8 +18,8 @@ int main() {
         printf(", ");
         if (cur_token == Id)
             printf("%s", SymbolTable[IdVal].Name);
-        else if (cur_token == IntLiteral) 
-            printf("%s", IntLexeme);
+        else if (cur_token == IntLiteral || cur_token == FloatLiteral) 
+            printf("%s", Lexeme);
         printf("> ");
         cur_token = GetNextToken();
     } while (cur_token != EofSym);

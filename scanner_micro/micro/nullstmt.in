@@ -1,0 +1,4 @@
+program nullstmttest;
+-- null statement 
+begin
+end.

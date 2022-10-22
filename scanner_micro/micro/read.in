@@ -1,0 +1,6 @@
+PROGRAM readtest;
+VAR a,b: integer;
+BEGIN
+-- This is a comment.
+read (a,b,a);
+END.

@@ -1,0 +1,7 @@
+program err1;
+var a, b : integer;
+BEGIN
+   a := a b + 1 * b;  -- the operator missing bewteen "a" and "b"
+   read(a, b);
+   a := b;
+END.

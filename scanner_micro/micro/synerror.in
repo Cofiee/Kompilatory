@@ -1,0 +1,11 @@
+program synerror;
+var a, b : integer;
+BEGIN
+   a := 0;
+   b := )a + 1;
+   read(b);
+   a := a * b + ; 
+   write(b, a);  
+   if (a > 0) then
+      b := 10;
+END.

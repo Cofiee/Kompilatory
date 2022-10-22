@@ -1,0 +1,7 @@
+program assigntest;
+var a,b : integer;
+begin
+   a := 1;
+   b := a;
+   a := 10 - a * (b + 5) / 20 + b * 20;
+end.

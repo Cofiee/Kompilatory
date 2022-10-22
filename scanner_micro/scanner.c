@@ -18,6 +18,7 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <string.h>
+#include <stdbool.h>
 #include "globals.h"
 
 /* Beginning of scanner declarations */
@@ -111,12 +112,35 @@ void BufferName(char c)
     BufferChar(EOS);
 }
 
-void BufferIntLiterals(char c) {
+bool BufferNumberWithFloatValidation(c)
+{
     char Inspect;
 
     BufferChar(c);
     GetNextChar(&Inspect);
-    while (isdigit(Inspect)) {
+    bool float_flag = false;
+    while (isdigit(Inspect) || Inspect == '.') 
+    {
+        if (Inspect == '.' && float_flag)
+            break;
+        if (Inspect == '.')
+            float_flag = true;
+        BufferChar(Inspect);
+        GetNextChar(&Inspect);
+	}
+    PutNextChar();
+    BufferChar(EOS);
+    return float_flag;
+}
+
+void BufferIntLiterals(char c) 
+{
+    char Inspect;
+
+    BufferChar(c);
+    GetNextChar(&Inspect);
+    while (isdigit(Inspect)) 
+    {
         BufferChar(Inspect);
         GetNextChar(&Inspect);
 	}
@@ -125,13 +149,13 @@ void BufferIntLiterals(char c) {
 }
 
 Token CheckReserved()
-    {
+{
     int i;
     for (i = 1; i <= LastSymbol; i++) 
         if (strcmp(TokenBuffer, SymbolTable[i].Name) == 0)
             return SymbolTable[i].Code;
     return Id;
-    }
+}
 
 Token GetNextToken()
 {
@@ -154,9 +178,12 @@ Token GetNextToken()
         }
         else if (isdigit(CurrentChar))
         {
-            BufferIntLiterals(CurrentChar);
-            strcpy(IntLexeme,TokenBuffer);
-            return IntLiteral;
+            bool float_flag = BufferNumberWithFloatValidation(CurrentChar);
+            strcpy(Lexeme, TokenBuffer);
+            if (float_flag) 
+                return FloatLiteral;
+            else
+                return IntLiteral;            
         }
         else 
         {
@@ -166,20 +193,22 @@ Token GetNextToken()
                 case ')':
                     return RightParenthesis; 
                 case ';':
-                    return SemiColon; 
+                    return SemiColonSym; 
                 case ',':
-                    return Comma; 
+                    return CommaSym; 
                 case '.':
-                    return Dot;
+                    return DotSym;
                 case ':':
                     GetNextChar(&Inspect);
-                    PutNextChar();
                     if (Inspect == '=')
-                        return Assign;
+                        return AssignSym;
                     else 
-                        return Colon;
+                    {
+                        PutNextChar();
+                        return ColonSym;
+                    }
                 case '+':
-                    return Plus; 
+                    return PlusSym; 
                 case '-':
                     GetNextChar(&Inspect);
                     if (Inspect == '-')
@@ -190,24 +219,34 @@ Token GetNextToken()
                     else
                     {
                         PutNextChar();
-                        return Minus; 
+                        return MinusSym; 
                     }
+                case '*':
+                    return MultiplySym;
+                case '/':
+                    return DivideSym;
                 case '<':
                     GetNextChar(&Inspect);
-                    PutNextChar();
                     if (Inspect == '=') 
-                        return LeEqual;
+                        return LeEqualSym;
                     else if (Inspect == '>')
-                        return NotEqual;
-                    else 
-                        return Lesser;
+                        return NotEqualSym;
+                    else {
+                        PutNextChar();
+                        return LesserSym;
+                    }
+                case '=':
+                    return EqualSym;
                 case '>':
                     GetNextChar(&Inspect);
-                    PutNextChar();
                     if (Inspect == '=')
-                        return GrEqual;
-                    else
-                        return Greater;
+                        return GrEqualSym;
+                    else 
+                    {
+                        PutNextChar();
+                        return GreaterSym;
+                    }
+                        
                 default:
                     LexicalError(CurrentChar);
                     return ErrorSym;

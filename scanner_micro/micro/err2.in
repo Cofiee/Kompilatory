@@ -1,0 +1,9 @@
+program err1;
+var a, b : integer;
+BEGIN
+   IF ( a > (b + 2) THEN  -- the ")" missing
+      BEGIN
+        write (a);
+      END;
+   write(b);
+END.

@@ -2,23 +2,25 @@
 
 // TODO: change to heap allocated array
 //IdString* TokenNames = calloc(15 * sizeof(IdString))
-IdString TokenNames[29] = {
+IdString TokenNames[35] = {
     "ProgramSym", 
-    "BeginSym", "EndSym", 
+    "BeginSym", "EndSym",
+    "ReadSym", "WriteSym",  
     "IfSym", "ThenSym",
     "WhileSym", "DoSym",
-    "ReadSym", "WriteSym", 
+    "VarSym",
     "Id", 
+    "IntSym", "FloatSym",
     "IntLiteral", "FloatLiteral", "BoolLiteral", 
     "LParen", "RParen", 
-    "Plus", "Minus", "Multiply", "Divide", 
-    "Lesser", "Equal", "Greater", "LeEqual", "NotEqual", "GrEqual"
-    "Assign", "SemiColon", "Comma", 
+    "PlusSym", "MinusSym", "MultiplySym", "DivideSym", 
+    "Lesser", "Equal", "Greater", "LeEqual", "NotEqual", "GrEqual",
+    "AssignSym", "SemiColonSym", "ColonSym", "CommaSym", "DotSym",
     "EofSym", "ErrorSym"
 };
 
 int  IdVal;           /* the symbol-table entry for an ID */
-IdString IntLexeme;   /* the lexeme for an INT literal    */
+IdString Lexeme;   /* the lexeme for an INT literal    */
 
 /* symbol table */
 

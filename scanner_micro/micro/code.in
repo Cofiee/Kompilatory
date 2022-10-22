@@ -1,0 +1,25 @@
+program code;
+VAR xyz, w10 : real;
+VAR a, b: integer;
+BEGIN
+    read(a, b, w10);
+    xyz := a + b;
+    if (100 * 2 - a <> a * a + a * a) then
+       write(a + (b * w10 - (100.11 + xyz)));
+    begin
+        while ( 2.2 < xyz - xyz * 5.5) do
+           write(a + (a - (xyz + 10)));
+    end;
+END.
+
+-- Here are the output of the program in two different runs:
+--
+-- Enter an integer a = ? 10
+-- Enter an integer b = ? 20
+-- Enter a real w10 = ? 1.1
+-- -98
+--
+-- Enter an integer a = ? 0
+-- Enter an integer b = ? 0
+-- Enter a real w10 = ? 0.0
+-- -100

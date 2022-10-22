@@ -1,0 +1,6 @@
+PROGRAM writetest;
+VAR a,b: integer;
+BEGIN
+-- This is a comment.
+write (a,(a*(b+1)));
+END.

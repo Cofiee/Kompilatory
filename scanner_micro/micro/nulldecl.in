@@ -1,0 +1,5 @@
+program nulldecltest;
+-- null statement 
+begin
+  write(1+2);
+end.
